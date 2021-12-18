@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+- details
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1 class="col">{{ book.title }}</h1>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-4">
+                <img src="{{ book.picture.url }}" alt="" class="img-thumbnail">
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-4 px-0">Author:</div>
+                    <div class="col-8">
+                        {% for author in book.get_authors %}
+                            <div>{{ author }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Published:</div>
+                    <div class="col-8">{{ book.publishing_year }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Publisher:</div>
+                    <div class="col-8">{{ book.publisher }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Cover type:</div>
+                    <div class="col-8">{{ book.cover_type }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Cost:</div>
+                    <div class="col-8">{{ book.cost }} ₽</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Page count:</div>
+                    <div class="col-8">{{ book.page_count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Language:</div>
+                    <div class="col-8">{{ book.language }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Description:</div>
+                    <div class="col-8">{{ book.short_description }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% if book.count_in_storage %}
+                            <span style="background-color: #0f0;">available</span>
+                        {% else %}
+                            <span style="background-color: #f00;">not available</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

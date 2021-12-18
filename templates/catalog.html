@@ -10,8 +10,12 @@
         {% for book in books %}
             <div class="col-xs-12 col-sm-3">
                 <div class="card p-3">
-                    <div class="card-header mb-1">{{ book.title }}</div>
-                    <img src="{{book.picture.url}}" alt="" class="card-img-top">
+                    <div class="card-header mb-1">
+                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                    </div>
+                    <a href="{{ book.get_absolute_url }}">
+                        <img src="{{book.picture.url}}" alt="" class="card-img-top">
+                    </a>
                     <div class="card-body">
                         <div class="container p-0">
                             <div class="row">
