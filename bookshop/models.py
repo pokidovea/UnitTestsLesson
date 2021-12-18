@@ -35,3 +35,4 @@ class Book(models.Model):
     cover_type = models.CharField(max_length=10, choices=CoverType.choices)
     cost = models.PositiveIntegerField(null=False)
     picture = models.ImageField(upload_to='book_pictures/')
+    count_in_storage = models.PositiveIntegerField(null=False, default=True)
