@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from bookshop.models import Book
+
+
+def catalog(request):
+    books = Book.objects.all()
+    return render(request, 'catalog.html', {'books': books})
