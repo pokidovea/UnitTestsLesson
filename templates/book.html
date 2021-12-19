@@ -4,6 +4,34 @@
     - details
 {% endblock %}
 
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        const showAlert = (message, type) => {
+            const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible fade show" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+            alertPlaceholder.append(wrapper)
+        }
+
+        const onBuyClicked = async () => {
+            let response = await fetch("{% url 'buy' book_id=book.id %}", {method: 'POST'});
+
+            if (response.ok) {
+                let json = await response.json();
+                if (json.success) {
+                    showAlert(json.message, 'success');
+                } else {
+                    showAlert(json.message, 'danger');
+                }
+            } else {
+                alert("Ошибка HTTP: " + response.status);
+            }
+
+        }
+    </script>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -60,15 +88,25 @@
                     <div class="col-8">{{ book.short_description }}</div>
                 </div>
                 <div class="row">
-                    <div class="col fs-4">
+                    <div class="col-4 fs-4">
                         {% if book.count_in_storage %}
                             <span class="p-1" style="background-color: #8f8;">available</span>
                         {% else %}
                             <span class="p-1" style="background-color: #f88;">not available</span>
                         {% endif %}
                     </div>
+                    <div class="col-8">
+                        <button
+                                class="btn btn-success"
+                                onclick="onBuyClicked();"
+                                {% if not book.count_in_storage %}disabled{% endif %}
+                        >
+                            Buy
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="liveAlertPlaceholder"></div>
 {% endblock %}

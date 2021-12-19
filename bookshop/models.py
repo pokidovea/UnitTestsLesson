@@ -65,6 +65,7 @@ class Book(models.Model):
     def get_absolute_url(self):
         return reverse('details', args=[str(self.slug)])
 
+    @property
     def cost_with_discount(self):
         today = datetime.date.today()
 
