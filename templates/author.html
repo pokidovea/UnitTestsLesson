@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    - author
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1 class="col">{{ author }}</h1>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-4">
+                <img src="{{ author.get_portrait_url }}" alt="" class="img-thumbnail">
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-4 px-0">Country:</div>
+                    <div class="col-8">
+                        {{ author.country }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Bio:</div>
+                    <div class="col-8">{{ author.bio }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 px-0">Books:</div>
+                    <div class="col-8">
+                        {% for book in author.books.all %}
+                            <div>
+                                <a href="{{ book.get_absolute_url }}">{{ book }}</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

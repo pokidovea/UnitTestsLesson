@@ -22,7 +22,9 @@
                                 <div class="col-4 px-0">Author:</div>
                                 <div class="col-8">
                                     {% for author in book.authors.all %}
-                                        <div>{{ author.name }}</div>
+                                        <div>
+                                            <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+                                        </div>
                                     {% endfor %}
                                 </div>
                             </div>

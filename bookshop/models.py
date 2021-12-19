@@ -2,6 +2,7 @@ import datetime
 from math import trunc
 
 from django.db import models
+from django.templatetags.static import static
 from django.urls import reverse
 
 
@@ -24,6 +25,14 @@ class Author(models.Model):
         if self.date_of_death:
             return f'{self.name} ({self.birthday.strftime("%Y")}-{self.date_of_death.strftime("%Y")})'
         return f'{self.name} ({self.birthday.strftime("%Y")}-...)'
+
+    def get_absolute_url(self):
+        return reverse('author_details', args=[str(self.id)])
+
+    def get_portrait_url(self):
+        if self.portrait:
+            return self.portrait.url
+        return static('images/question.webp')
 
 
 class Book(models.Model):
