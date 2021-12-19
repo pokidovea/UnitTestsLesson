@@ -1,3 +1,6 @@
+import datetime
+from math import trunc
+
 from django.db import models
 from django.urls import reverse
 
@@ -55,3 +58,16 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         return reverse('details', args=[str(self.slug)])
+
+    def cost_with_discount(self):
+        today = datetime.date.today()
+
+        # New Year discount 20%
+        if today.month == 12 and (25 <= today.day <= 31):
+            return trunc(self.cost * 0.8)
+
+        # 8th March discount 10%
+        if today.month == 3 and (5 <= today.day <= 12):
+            return trunc(self.cost * 0.9)
+
+        return self.cost

@@ -32,7 +32,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-4 px-0">Cost:</div>
-                                <div class="col-8">{{ book.cost }} ₽</div>
+                                <div class="col-8">
+                                {% if book.cost != book.cost_with_discount %}
+                                    <span class="text-decoration-line-through">{{ book.cost }}</span>
+                                    <span style="color: red">{{ book.cost_with_discount }} ₽</span>
+                                {% else %}
+                                    <span>{{ book.cost }} ₽</span>
+                                {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block page_title %}
-- details
+    - details
 {% endblock %}
 
 {% block content %}
@@ -36,7 +36,14 @@
                 </div>
                 <div class="row">
                     <div class="col-4 px-0">Cost:</div>
-                    <div class="col-8">{{ book.cost }} ₽</div>
+                    <div class="col-8">
+                        {% if book.cost != book.cost_with_discount %}
+                            <span class="text-decoration-line-through">{{ book.cost }}</span>
+                            <span style="color: red">{{ book.cost_with_discount }} ₽</span>
+                        {% else %}
+                            <span>{{ book.cost }} ₽</span>
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-4 px-0">Page count:</div>
@@ -51,11 +58,11 @@
                     <div class="col-8">{{ book.short_description }}</div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col fs-4">
                         {% if book.count_in_storage %}
-                            <span style="background-color: #0f0;">available</span>
+                            <span class="p-1" style="background-color: #8f8;">available</span>
                         {% else %}
-                            <span style="background-color: #f00;">not available</span>
+                            <span class="p-1" style="background-color: #f88;">not available</span>
                         {% endif %}
                     </div>
                 </div>
