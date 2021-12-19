@@ -22,8 +22,8 @@ class Author(models.Model):
 
     def __str__(self):
         if self.date_of_death:
-            return f'{self.name} ({self.birthday}-{self.date_of_death})'
-        return f'{self.name} ({self.birthday})'
+            return f'{self.name} ({self.birthday.strftime("%Y")}-{self.date_of_death.strftime("%Y")})'
+        return f'{self.name} ({self.birthday.strftime("%Y")}-...)'
 
 
 class Book(models.Model):
@@ -52,9 +52,6 @@ class Book(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.publishing_year})'
-
-    def get_authors(self):
-        return self.authors.values_list('name', flat=True)
 
     def get_absolute_url(self):
         return reverse('details', args=[str(self.slug)])

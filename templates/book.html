@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-4 px-0">Author:</div>
                     <div class="col-8">
-                        {% for author in book.get_authors %}
+                        {% for author in book.authors.all %}
                             <div>{{ author }}</div>
                         {% endfor %}
                     </div>

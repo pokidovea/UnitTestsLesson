@@ -21,8 +21,8 @@
                             <div class="row">
                                 <div class="col-4 px-0">Author:</div>
                                 <div class="col-8">
-                                    {% for author in book.get_authors %}
-                                        <div>{{ author }}</div>
+                                    {% for author in book.authors.all %}
+                                        <div>{{ author.name }}</div>
                                     {% endfor %}
                                 </div>
                             </div>
