@@ -70,7 +70,7 @@ class Book(models.Model):
         today = datetime.date.today()
 
         # New Year discount 20%
-        if today.month == 12 and (25 <= today.day <= 31):
+        if today.month == 12 and (20 <= today.day <= 31):
             return trunc(self.cost * 0.8)
 
         # 8th March discount 10%
