@@ -1,2 +1,10 @@
 Django==4.0
 Pillow==8.4.0
+
+pytest
+pytest-django
+pytest-coverage
+pytest-factoryboy
+immobilus
+pytest-mock
+snapshottest
