@@ -74,7 +74,7 @@ class Book(models.Model):
             return trunc(self.cost * 0.8)
 
         # 8th March discount 10%
-        if today.month == 3 and (5 <= today.day <= 12):
+        if today.month == 3 and (5 <= today.day <= 31):
             return trunc(self.cost * 0.9)
 
         return self.cost
