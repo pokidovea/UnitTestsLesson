@@ -17,7 +17,7 @@ class Author(models.Model):
     name = models.CharField(max_length=200)
     birthday = models.DateField(null=False)
     date_of_death = models.DateField(null=True, blank=True)
-    country = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, default=None)
     portrait = models.ImageField(upload_to='portraits/', null=True, blank=True)
     bio = models.TextField(default='', blank=True)
 
