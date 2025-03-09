@@ -8,8 +8,19 @@ metadata:
   tags:
     - python
     - django
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: website
   lifecycle: production
   system: programming-lessons
   owner: user:pokidovea
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: programming-lessons
+  description: Уроки программирования
+spec:
+  owner: itwa
