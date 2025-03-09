@@ -4,7 +4,7 @@ metadata:
   name: UnitTestsLesson
   description: A sample project for unit tests lesson
   labels:
-    python: 3.8
+    python: "3.8"
   tags:
     - python3.8
     - django
