@@ -3,6 +3,9 @@ kind: Component
 metadata:
   name: UnitTestsLesson
   description: A sample project for unit tests lesson
+  tags:
+    - python
+    - Django
 spec:
   type: website
   lifecycle: production
