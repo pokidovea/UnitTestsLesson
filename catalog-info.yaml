@@ -5,7 +5,7 @@ metadata:
   description: A sample project for unit tests lesson
   tags:
     - python
-    - Django
+    - django
 spec:
   type: website
   lifecycle: production
