@@ -9,4 +9,5 @@ metadata:
 spec:
   type: website
   lifecycle: production
+  system: programming-lessons
   owner: user:pokidovea
