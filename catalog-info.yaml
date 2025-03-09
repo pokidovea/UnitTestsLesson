@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: UnitTestsLesson
+  description: A sample project for unit tests lesson
+spec:
+  type: website
+  lifecycle: production
+  owner: user:pokidovea
